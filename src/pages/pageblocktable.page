@@ -1,0 +1,24 @@
+<apex:page controller="pageblocktable">
+<apex:form >
+    <apex:pageBlock title="My Content" id="Details">
+    <apex:pageBlockTable value="{!acclist}" var="a">
+            <apex:column value="{!a.id}"/>
+            <apex:column value="{!a.name}"/>
+            
+    
+    
+    
+    </apex:pageBlockTable>
+
+
+      <apex:pageBlockButtons >
+    <apex:commandButton title="FirstPage" value="FirstPage" action="{!FirstPage}" reRender="Details" disabled="{!prev}"/>
+    <apex:commandButton title="previous" value="previous" action="{!previous}" reRender="Details" disabled="{!prev}"/>
+    <apex:commandButton title="next" value="next" action="{!next}" reRender="Details" disabled="{!nxt}"/>
+    <apex:commandButton title="LastPage" value="LastPage" action="{!LastPage}" reRender="Details" disabled="{!nxt}"/>
+    
+    </apex:pageBlockButtons>
+
+    </apex:pageBlock> 
+</apex:form>
+</apex:page>

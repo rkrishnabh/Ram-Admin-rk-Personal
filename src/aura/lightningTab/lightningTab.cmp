@@ -1,0 +1,29 @@
+<aura:component >
+    <lightning:tabset >
+
+    <lightning:tab label="1st tab" onactive="{!c.loadFirstTab}" >
+
+        <aura:set attribute="body">
+            <lightning:card iconName="standard:report" title="first tab">
+                This is my first tab
+                <c:AccountList />
+            </lightning:card>
+        </aura:set>
+
+    </lightning:tab>
+
+    <lightning:tab onactive="{!c.loadSecondTab}">
+        <aura:set attribute="label">
+            Thise Second tab
+        </aura:set>
+
+        <aura:set attribute="body">
+            <lightning:card iconName="standard:report" title="second tab">
+                <c:ContactList />
+            </lightning:card>
+        </aura:set>
+
+    </lightning:tab>
+
+</lightning:tabset>
+</aura:component>

@@ -1,0 +1,52 @@
+<apex:page controller="activityTrackingData">
+<apex:form >
+ <script>
+   
+            alert(' You entered :: '+selectclick); 
+   
+  </script> 
+
+
+        <apex:panelGrid columns="3" id="abcd">
+
+            <apex:selectList id="sel1" value="{!leftselected}" multiselect="true" style="width:100px" size="5">
+
+                <apex:selectOptions value="{!unselectedvalues}" />
+
+            </apex:selectList>
+
+                <apex:panelGroup >
+
+                    <br/>
+                    <!--<apex:commandButton value="Add" action="{!selectclick}" reRender="abcd"/>-->
+
+                   <apex:image value="{!$Resource.multiselected}">
+
+                        <apex:actionSupport event="onclick" action="{!selectclick}" reRender="abcd"/>
+
+                    </apex:image> 
+
+                    <br/><br/>
+                     <!--<apex:commandButton value="Remove" action="{!unselectclick}" reRender="abcd"/>-->
+
+                    <apex:image value="{!$Resource.multiunselected}">
+
+                        <apex:actionSupport event="onclick" action="{!unselectclick}" reRender="abcd"/>
+
+                    </apex:image>
+
+                </apex:panelGroup>
+
+            <apex:selectList id="sel2" value="{!rightselected}" multiselect="true" style="width:100px" size="5">
+
+                <apex:selectOptions value="{!SelectedValues}" />
+
+            </apex:selectList>
+
+        </apex:panelGrid>
+   <!--<apex:outputLabel value="Users: " style="font-weight: normal;font-size:2.0em;"/>
+      <apex:selectList value="{!selectedUser}" size="1" multiselect="true"  style="width:200px;height:200px;position: relative;left: 110px;">
+          <apex:selectOptions value="{!useroptions}"/>
+      </apex:selectList> <br/><br/> -->
+      </apex:form>
+</apex:page>

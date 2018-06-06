@@ -1,0 +1,4 @@
+<aura:component >
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+  <ui:inputSelect label="Select me:" class="dynamic" aura:id="InputSelectDynamic"/>
+</aura:component>

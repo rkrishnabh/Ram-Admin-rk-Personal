@@ -1,0 +1,5 @@
+<apex:page controller="passlistofparameters">
+<apex:form >
+  <apex:commandButton value="submit" action="{!gotonewpage}"/>
+  </apex:form>
+</apex:page>

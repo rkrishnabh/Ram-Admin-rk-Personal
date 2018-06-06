@@ -1,0 +1,25 @@
+<apex:page controller="displaychiltoparentdata">
+   <apex:form >
+              <apex:commandButton value="Click" action="{!show}"/>
+              <apex:pageBlock >
+                  <apex:pageBlockTable value="{!displaybatch}" var="a">
+                  <apex:column value="{!a.id}"/> 
+                   <apex:column value="{!a.name}"/>
+                   
+                   <apex:column value="{!a.ctrla51__training__r.id}"/> 
+                   <apex:column value="{!a.ctrla51__training__r.name}"/>
+                   
+                   
+                  
+                  
+                 
+                  
+                  
+              
+              </apex:pageBlockTable>
+              
+              
+              </apex:pageBlock>
+  
+  </apex:form>
+</apex:page>

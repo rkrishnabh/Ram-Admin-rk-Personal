@@ -1,0 +1,129 @@
+<apex:page controller="AddContactsOpportunitiesCLS" id="thePage" action="{!init}">
+
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"/>
+<script>
+    j$ = jQuery.noConflict();
+    
+    function showLoadingDiv() {
+        var newHeight = j$("[id$=theFm]").css("height");//Just shade the body, not the header
+        j$("[id$=loading-curtain-div]").css("background-color", "black").css("opacity", 0.50).css("height", newHeight).css("width", "90%");
+    }
+    function hideLoadingDiv() {
+        j$("[id$=loading-curtain-div]").css("background-color", "black").css("opacity", "1").css("height", "0px").css("width", "90%");
+    }
+    
+</script>
+<style>
+    #loading-curtain-div {
+        height:0px;
+        width:100%;
+        position:absolute;
+        z-index:5;
+        //-webkit-transition: all 0.30s ease-out;
+        //-moz-transition: all 0.30s ease-out;
+    }
+</style>
+
+
+
+ <apex:form id="theFm">
+   <div id="loading-curtain-div"/>
+   <apex:pageBlock title="Account--Contacts--Opportunities Creation" >
+   <apex:actionStatus id="save-lead-status" onstart="showLoadingDiv();" onstop="hideLoadingDiv();"/>
+    <apex:pageblockButtons >
+     <apex:commandButton value="Save" action="{!Save}" status="save-lead-status" reRender="theFm" />
+     <apex:commandButton value="Cancel" action="{!Cancel}" immediate="true"/>
+    </apex:pageblockButtons>
+     
+     
+     <apex:pageBlockSection id="pbs" columns="2" title="Account Details">      <apex:inputField value="{!acc.Name}"/>
+      <apex:inputField value="{!acc.accountNumber}"/>
+     <apex:inputField value="{!acc.Type}"/>
+     <apex:inputField value="{!acc.Industry}"/>
+     </apex:pageBlockSection>
+     
+     <apex:pageBlockSection title="Contact Details" columns="1" collapsible="false">
+       <apex:outputPanel id="contactHead">
+      <apex:variable value="{!0}" var="rowNum"/>  
+        <apex:pageBlockTable value="{!waConList}" var="eachRecord"> 
+         <apex:column headerValue="Action">
+        <apex:commandLink value="Remove" style="color:red" action="{!removeRowFromConList}" rendered="{!rowNum > 0}" rerender="contactHead" immediate="true" status="conRemoveLink" >
+             <apex:param value="{!rowNum}" name="rowToRemove" assignTo="{!rowToRemove}"/>
+         </apex:commandLink>
+         <apex:actionStatus id="conRemoveLink" >
+                <apex:facet name="start" >
+                  <img src="/img/loading.gif" />                    
+                </apex:facet>
+         </apex:actionStatus>
+         <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+      </apex:column>
+      <apex:column headerValue="First Name">
+                            <apex:inputField value="{!eachRecord.record.FirstName}" required="true"/>
+       </apex:column>
+       <apex:column headerValue="Last Name">
+                            <apex:inputField value="{!eachRecord.record.LastName}" required="true"/>
+       </apex:column>
+       <apex:column headerValue="Phone">
+                            <apex:inputField value="{!eachRecord.record.phone}" required="true"/>
+       </apex:column>
+       <apex:column headerValue="Email">
+                            <apex:inputField value="{!eachRecord.record.email}" required="true"/>
+       </apex:column>
+      
+        </apex:pageBlockTable>
+        <apex:commandButton value="Add More" action="{!addNewRowToConList}" rerender="contactHead" Status="conStatusId" immediate="true" />
+        <apex:actionStatus id="conStatusId" >
+                <apex:facet name="start" >
+                  <img src="/img/loading.gif" />                    
+                </apex:facet>
+         </apex:actionStatus>
+     </apex:outputPanel>
+     </apex:pageBlockSection>
+     
+     
+     <!-- Opportunity Table Goes here -->
+          <apex:pageBlockSection title="Opportunity Details" columns="1" collapsible="false">
+       <apex:outputPanel id="opportunityHead">
+      <apex:variable value="{!0}" var="rowNum"/>  
+        <apex:pageBlockTable value="{!waOppList}" var="eachRecord"> 
+         <apex:column headerValue="Action">
+        <apex:commandLink value="Remove" style="color:red" action="{!removeRowFromOppList}" rendered="{!rowNum > 0}" rerender="opportunityHead" immediate="true" status="oppRemoveLink" >
+             <apex:param value="{!rowNum}" name="rowToRemove" assignTo="{!rowToRemove}"/>
+         </apex:commandLink>
+         <apex:actionStatus id="oppRemoveLink" >
+                <apex:facet name="start" >
+                  <img src="/img/loading.gif" />                    
+                </apex:facet>
+         </apex:actionStatus>
+         <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+      </apex:column>
+      <apex:column headerValue="Name">
+                            <apex:inputField value="{!eachRecord.record.Name}" required="true"/>
+       </apex:column>
+       
+       <apex:column headerValue="Amount">
+                            <apex:inputField value="{!eachRecord.record.Amount}" required="true"/>
+       </apex:column>
+       <apex:column headerValue="Stage">
+                            <apex:inputField value="{!eachRecord.record.StageName}" required="true"/>
+       </apex:column>
+       <apex:column headerValue="CloseDate">
+          <apex:inputField value="{!eachRecord.record.closeDate}" required="true"/>
+       </apex:column>
+       
+       
+      
+        </apex:pageBlockTable>
+        <apex:commandButton value="Add More" action="{!addNewRowToOppList}" rerender="opportunityHead" Status="oppStatusId" immediate="true" />
+        <apex:actionStatus id="oppStatusId" >
+                <apex:facet name="start" >
+                  <img src="/img/loading.gif" />                    
+                </apex:facet>
+         </apex:actionStatus>
+     </apex:outputPanel>
+     </apex:pageBlockSection>
+   </apex:pageBlock>
+
+ </apex:form>
+
+</apex:page>

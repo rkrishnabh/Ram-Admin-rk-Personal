@@ -1,0 +1,24 @@
+<apex:page id="pg" controller="logincls">
+<script>
+    function check(){
+        
+        var uname = document.getElementById('pg:fm:un').value; 
+        var pswd =  document.getElementById('pg:fm:pw').value;        
+        
+        if(uname == '' || pswd == ''){
+            alert('Please check your credentails..');
+            return false;
+        }
+        else
+            return true;
+        
+    }
+</script>
+<apex:pageMessages ></apex:pageMessages>
+    <apex:form id="fm">
+        Username <apex:inputText id="un" value="{!uname}" />
+        Password <apex:inputSecret id="pw" value="{!pswd}" />
+        <apex:commandButton value="Login" onclick="return check(); " action="{!validate}"/>
+        <apex:commandLink value="Registers" action="https://www.google.com"/>
+    </apex:form>
+</apex:page>

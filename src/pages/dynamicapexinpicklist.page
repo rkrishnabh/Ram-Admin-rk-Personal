@@ -1,0 +1,29 @@
+<apex:page controller="dynamicapexinpicklist">
+  <apex:form >
+      <apex:pageBlock >
+      <apex:pageBlockSection >
+          <apex:pageBlockSectionItem >
+          <apex:outputLabel value="object list"/>  
+          <apex:selectList size="1" value="{!selectedobj}" >
+          <apex:selectOptions value="{!objects}"/>
+          <apex:actionSupport event="onchange" action="{!details}" reRender="ob"/>
+          
+          
+          
+          </apex:selectList>   
+          
+          
+          </apex:pageBlockSectionItem>
+          <apex:pageblockSectionItem >
+          
+         <apex:outputLabel value="{!objDescription}" id="ob"/>
+          </apex:pageblockSectionItem>
+      
+      
+      </apex:pageBlockSection>
+      
+      
+      </apex:pageBlock>
+  
+  </apex:form>
+</apex:page>

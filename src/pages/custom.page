@@ -1,0 +1,7 @@
+<apex:page controller="Cutom" >
+  <apex:form >
+        <apex:selectList value="{!country}" size="1">
+                    <apex:selectOptions value="{!countriesSelectList}"/>
+             </apex:selectList> 
+  </apex:form>
+</apex:page>

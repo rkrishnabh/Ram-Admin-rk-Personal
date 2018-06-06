@@ -1,0 +1,123 @@
+<apex:page id="pg" >
+<style>
+      body{font-family: Arial,Helvetica,sans-serif; color: #222;}
+     .btn-warning {
+      background-color: #c25222;
+      font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
+      font-size: 16px;
+      font-weight: 200;
+      color: #fff;
+      border-radius:4px;
+      border:none;
+      padding:5px 16px;
+      position: relative;
+      left: -12px;
+    }
+    
+    .btn-warnings {
+      background-color:#f2672a;
+      font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
+      font-size: 20px;
+      font-weight: 200;
+      color: #608000;
+      cursor: pointer;
+      border-radius:6px;
+      border:none;
+      padding:15px 40px;
+      position: relative;
+      left: -12px;
+      text-decoration: none;
+    }
+   
+    .btn-warningFocus {
+          background-color: #f2672a;
+          font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
+          font-size: 16px;
+          font-weight: 200;
+          color: #608000;
+          cursor: pointer;
+          border-radius:12px;
+          border:none;
+          padding:5px 16px;
+          position: relative;
+          left: -12px;
+          box-shadow: 0px 0px 2px #000;
+        }
+     .enable{
+        margin: 0 auto;
+        border: none;
+        border-radius: 4px;
+        padding: 15px 45px;  
+        font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
+        font-size: 16px;
+        font-weight: 600;   
+        cursor:default;
+         background-image:url(../resource/1490079683000/FLCustomerJournePages/01ConditionalOffer/images/arrw.png);
+        background-repeat: no-repeat;
+        background-size: 14px;
+        background-position: right center;
+        border-right: 30px solid #f2672a;
+        background-color: #f2672a;
+        cursor:pointer;
+        color:#fff;
+        text-decoration:none;
+     }
+     .disabled{
+        margin: 0 auto;
+        border: none;
+        border-radius: 4px;
+        padding: 15px 45px;  
+        font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
+        font-size: 16px;
+        font-weight: 600;   
+        cursor:default;
+        background-image:url(../resource/1490079683000/FLCustomerJournePages/01ConditionalOffer/images/arrw.png);
+        background-repeat: no-repeat;
+        background-size: 14px;
+        background-position: right center;
+        border-right: 30px solid #c25222;
+        background-color: #c25222;
+        cursor:default;
+        color:#ccc;
+        text-decoration:none;
+         
+    }
+    </style>
+
+<apex:form id="fm">
+  
+  <apex:inputCheckbox id="chkbox" onclick="EnableDisableTextBox(this)"/> I aggre the terms and conductions....<br></br>
+ <apex:commandButton value="Open Link" styleClass="btn-warning"   id="btn1" />
+  <apex:commandButton value="Open Link" styleClass="btn-warning" id="btn2"/>
+   <apex:commandButton value="Open Link" styleClass="btn-warning" id="btn3"/>
+    
+</apex:form>
+<Script>
+function EnableDisableTextBox(chkbox) {
+
+           
+              var classnm='';
+                if(chkbox.checked)
+                    {
+                       classnm ='btn-warningFocus'; 
+                       
+                    }
+               else
+                   {
+                       document.getElementById('pg:fm:btn1').className = 'disabled';
+                       document.getElementById('pg:fm:btn2').className = 'disabled';
+                       document.getElementById('pg:fm:btn3').className = 'disabled';
+                       classnm ='btn-warning'; 
+                       
+                   }
+               
+               document.getElementById('pg:fm:btn1').className=classnm;
+               document.getElementById('pg:fm:btn2').className=classnm;
+               document.getElementById('pg:fm:btn3').className=classnm;
+             
+           
+                 
+                
+            }
+</Script>
+</apex:page>

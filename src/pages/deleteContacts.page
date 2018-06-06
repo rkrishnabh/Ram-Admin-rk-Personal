@@ -1,0 +1,20 @@
+<apex:page controller="deleteContactsCls">
+	<apex:form >
+		<apex:pageblock >
+			<apex:pageblocktable value="{!lstwrap}" var="w">
+				<apex:column >
+					<apex:inputCheckBox value="{!w.ischeck}"/>
+				</apex:column>
+				
+				<apex:column value="{!w.con.name}"/>
+				<apex:column value="{!w.con.phone}"/>
+				<apex:column value="{!w.con.email}"/>
+			</apex:pageblocktable>
+			
+			<apex:pageblockbuttons >
+			
+				<apex:commandButton value="Delete" action="{!deleteContacts}"/>
+			</apex:pageblockbuttons>
+		</apex:pageblock>
+	</apex:form>
+</apex:page>

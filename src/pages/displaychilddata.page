@@ -1,0 +1,25 @@
+<apex:page controller="displaychliddata">
+  <apex:form >
+              <apex:commandButton value="Click" action="{!show}"/>
+              <apex:pageBlock >
+              <apex:pageBlockTable value="{!trininglst}" var="a">
+              <apex:column value="{!a.id}"/> 
+               <apex:column value="{!a.name}"/>
+              
+              
+              <apex:column >
+              <apex:pageBlockTable value="{!a.ctrla51__Batchs__r}" var="b">
+              <apex:column value="{!b.id}"/> 
+               <apex:column value="{!b.name}"/>
+              
+              
+              
+              </apex:pageBlockTable>
+              </apex:column>
+              </apex:pageBlockTable>
+              
+              
+              </apex:pageBlock>
+  
+  </apex:form>
+</apex:page>

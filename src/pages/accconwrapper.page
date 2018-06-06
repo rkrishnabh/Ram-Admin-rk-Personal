@@ -1,0 +1,16 @@
+<apex:page controller="accconwrapper" >
+<apex:form >
+    <apex:pageBlock >
+          <apex:pageBlockTable value="{!items}" var="i" >
+          <apex:column value="{!i.acc.name}"/>
+          <apex:column value="{!i.con.name}"/>
+          
+          
+          
+          </apex:pageBlockTable>
+    
+    
+    </apex:pageBlock>
+
+</apex:form>
+</apex:page>

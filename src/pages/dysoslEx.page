@@ -1,0 +1,26 @@
+<apex:page controller="dysoslEx_controller">
+  <apex:sectionHeader title="example" subtitle="DynamicSOSL"/>
+  <apex:form >
+  <script>  
+  function onControllerReturn() {
+    alert('{!message}');
+  }
+  </script>
+ 
+  <apex:inputText value="{!SearchStr}"/>
+   <apex:commandButton value="java script" onclick="onControllerReturn()"/>
+   <apex:actionFunction name="doControllerSave" action="{!Search}" rerender="error"/>
+   
+  <apex:commandButton value="Search" action="{!Search}" oncomplete="onControllerReturn()" reRender="error,stu"/>
+     <apex:outputPanel title="" id="error">
+     <apex:pageMessages ></apex:pageMessages>
+     </apex:outputPanel>
+  
+  <apex:pageBlock title="Students" id="stu">
+  <apex:pageBlockTable value="{!StList}" var="s">
+  <apex:column value="{!s.name}"/>
+  <apex:column value="{!s.id}"/>
+  </apex:pageBlockTable>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

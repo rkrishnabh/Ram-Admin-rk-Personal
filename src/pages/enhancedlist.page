@@ -1,0 +1,4 @@
+<apex:page >
+    <apex:enhancedList type="Account" height="300"/>
+    <apex:enhancedList type="Gateway__c" height="300"/>
+</apex:page>

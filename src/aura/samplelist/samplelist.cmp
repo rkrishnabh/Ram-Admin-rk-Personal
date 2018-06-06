@@ -1,0 +1,13 @@
+<aura:component >
+	 <aura:attribute name="status"  type="list" default="Open,Open, Closed, Closed Won, Any"/>
+      <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+     <aura:iteration items="{!v.status}" var="s">
+         
+         {!s}
+         <br>-------</br>
+         
+             <!--<ui:inputCheckbox aura:id="checkbox1" label="{!s}"  text="{!s}" change="{!c.onCheck1}" />-->
+           <!-- <ui:inputCheckbox aura:id="checkbox1" label="{!s}"  text="{!s}"   />-->
+            
+            </aura:iteration>
+</aura:component>

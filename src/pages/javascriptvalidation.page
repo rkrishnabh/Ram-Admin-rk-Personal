@@ -1,0 +1,39 @@
+<apex:page controller="Sample" >
+
+<!-- Javascript -->
+    <script type="text/javascript">
+
+    function validate()
+    {
+        if(document.getElementById('{!$Component.frm.pb.pbs.pbsi1.nam}').value == '')
+        {
+            alert("Account name is mandatory");
+        }
+       
+        else
+        {
+            callSubmt();
+            alert("Account has been inserted");
+        }
+    }
+    
+    </script>
+<!-- Javascript -->
+
+<apex:form id="frm">
+
+<apex:actionFunction action="{!submt}" name="callSubmt" reRender="pb"/>
+
+    <apex:pageBlock id="pb">
+        <apex:pageBlockSection id="pbs">
+            <apex:pageBlockSectionItem ><apex:outputLabel value="Account Name"/></apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pbsi1"><apex:inputText value="{!nam}" id="nam"/></apex:pageBlockSectionItem>                
+                                          
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Insert" onclick="validate();"/>
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+</apex:form>
+
+</apex:page>

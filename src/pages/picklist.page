@@ -1,0 +1,9 @@
+<apex:page >
+	<apex:form >
+		<apex:selectList >
+			<apex:selectoption itemValue="IND" itemLabel="India"/>
+			<apex:selectoption itemValue="SL" itemLabel="Srilanka"/>
+			<apex:selectoption itemValue="CN" itemLabel="China"/>						
+		</apex:selectList>
+	</apex:form>
+</apex:page>

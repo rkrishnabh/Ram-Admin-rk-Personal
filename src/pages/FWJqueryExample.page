@@ -1,0 +1,67 @@
+<apex:page controller="Fwline">
+ <head>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+         <link href="//getbootstrap.com/examples/signin/signin.css" rel="stylesheet" media="screen"/>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> 
+</head>
+
+  <apex:includeScript value="{!$Resource.Jquerylatest31}"/>
+  <apex:form id="FormId" style="height:100%;" >
+  <apex:pageBlock id="pgblckID">
+ <div style="margin-left:5%;; margin-top:5%;">
+       <table>
+                    <tr>
+                    <td> Account Name:</td>
+                    <td> <apex:inputField value="{!acc.Name}" id="accName" styleClass="form-control" /></td>
+                   </tr>
+                    <tr>
+                    <td> AccountNumber:</td>
+                    <td><apex:inputField value="{!acc.accountNumber}" id="accAccountNumber" styleClass="form-control" /></td>
+                    </tr>                
+                    <tr>  
+                    <td>AccType:</td>
+                    <td><apex:inputField value="{!acc.Type}" id="accType" styleClass="form-control" /></td>
+                    </tr>
+                    <tr>
+                    <td>AccIndustry:</td>
+                    <td><apex:inputField value="{!acc.Industry}" id="accIndustry" styleClass="form-control" /></td> 
+                    </tr> 
+                    <tr>
+                        <td>
+                        <apex:inputCheckbox id="chk" onclick="btnClick()"/>Terms and conductions
+                        </td> 
+                   </tr>
+            </table>
+                  
+      </div>          
+ <apex:commandButton value="Save" id="bntSave" action="{!saveRecord}" reRender="pgblckID" styleClass="btn btn-default"  />
+ </apex:pageBlock>
+  
+  </apex:form>
+    
+     <script>
+    j$ = jQuery.noConflict();
+    if(j$) {
+      //alert('Jquery loaded successfull....');
+       function btnClick() { 
+       
+       
+       
+            if (j$(this).is(":checked")) {
+            alert('Jquery loaded successfull....'); 
+                j$("#bntSave").removeAttr("disabled");
+                j$("#bntSave").focus();
+            } else {
+                j$("#bntSave").attr("disabled", "disabled");
+            }
+       
+       }
+       
+      
+        
+    
+     }
+    
+     </script>
+     
+    </apex:page>

@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="Detali_page_submit_Button" >
+                <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="data_Update" type="account"/>
+    <aura:attribute name="paramtest" type="String" default="venkat reddy" />
+    <ui:button aura:id="button" buttonTitle="Click" class="button" label="Submit opp" press="{!c.doInit}"/>
+   
+</aura:component>

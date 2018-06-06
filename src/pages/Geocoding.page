@@ -1,0 +1,10 @@
+<apex:page controller="GeoCodingcls">
+    <apex:form >
+        <apex:pageblock >
+            <apex:pageblocksection >
+                <apex:inputtextArea value="{!address}" label="Address"/>
+                <apex:commandButton value="Fetch" action="{!fetch}"/> 
+            </apex:pageblocksection>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

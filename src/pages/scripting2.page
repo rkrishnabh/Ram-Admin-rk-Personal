@@ -1,0 +1,18 @@
+<apex:page id="pg">
+<script>
+    function showImg(){
+        document.getElementById('pg:fm:img').style.visibility='visible';
+    }
+    function hideImg(){
+        document.getElementById('pg:fm:img').style.visibility='hidden';
+    }
+</script>
+    <apex:form id="fm">
+       
+            <apex:commandButton value="Show" onclick="showImg(); return false;"/>
+            <apex:commandButton value="Hide" onclick="hideImg(); return false;"/><br/>
+            <apex:image id="img" value="{!$Resource.Logo}" style="visibility:hidden" />
+            
+       
+    </apex:form>
+</apex:page>

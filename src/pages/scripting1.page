@@ -1,0 +1,23 @@
+<apex:page id="pg" >
+<style>
+    .labelcls{
+        color:green;
+        font-size:24px;
+        font-family:gigi;
+    }
+</style>
+<script>
+    function change(){
+        document.getElementById('pg:ol').className='labelcls';        
+    }
+    function unchange(){
+        document.getElementById('pg:ol').className='';       
+    }
+</script>
+
+    <apex:outputLabel id="ol" onmouseover="change()" onmouseout="unchange()">Ctrla Technologies</apex:outputLabel>
+    <br></br>
+    
+    <label id="lb">Ctrla Technologies</label>
+    
+</apex:page>

@@ -1,0 +1,22 @@
+<apex:page controller="Unsing_lightningcomponent_invf" contentType="{!RenderedContentType}" renderAs="{!RenderingService}">
+<apex:form >
+<apex:commandButton title="Pdf" value="Pdf" action="{!setRenderAs}"/>
+
+    <apex:includeScript value="/lightning/lightning.out.js"/>
+ 
+    <script>
+        $Lightning.use("ctrla51:QuickContacts", function() {
+            $Lightning.createComponent(
+                "ctrla51:ContactList",
+                {},
+                "theLead",
+                function(cmp) {
+                    console.log("Component created!");
+                    console.log(cmp);
+                });
+            });
+    </script>
+    
+    <div id="theLead"></div>
+    </apex:form>
+</apex:page>

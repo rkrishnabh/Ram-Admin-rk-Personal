@@ -1,0 +1,29 @@
+<apex:page controller="RemotingObjectsController">
+  <script>
+      
+      function Account(){
+          this.Id = null;
+          this.Name = null;
+          }
+
+     
+      var acc1= document.getElementById('accname').value;
+   
+      var acc2 = new Account();
+      acc2.Name = 'Austin';
+   
+  var accounts = new Array(acc1, acc2);
+
+      Visualforce.remoting.Manager.invokeAction(
+        '{!$RemoteAction.RemotingObjectsController.addAccounts}',
+        accounts,
+        function(result, event) {
+          console.log(result);
+        });
+  </script>
+  <h2>Javascript Remoting Form Submission Example </h2> <br /> <br />
+ 
+   Description: <input type="text" value="{!Account.Name}" size="50" id="accname"/> <br />
+ 
+  <button onclick="Account()">Submit Form</button>
+</apex:page>

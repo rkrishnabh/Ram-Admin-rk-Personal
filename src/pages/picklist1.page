@@ -1,0 +1,32 @@
+<apex:page controller="picklist1cls">
+    <apex:form >
+    	<!--<apex:actionFunction name="fill" action="{!fetch}" rerender="ol"/>
+    	<apex:selectList value="{!selValue}" size="1" onchange="fill()">
+    		<apex:selectOption itemValue="IN" itemLabel="India"/>
+    		<apex:selectOption itemValue="SL" itemLabel="Srilanka"/>
+	    	<apex:selectOption itemValue="AUS" itemLabel="Australia"/>
+    	</apex:selectList>-->
+    	<apex:selectList value="{!selValue}" size="1">
+    		<apex:selectOption itemValue="IN" itemLabel="India"/>
+    		<apex:selectOption itemValue="SL" itemLabel="Srilanka"/>
+	    	<apex:selectOption itemValue="AUS" itemLabel="Australia"/>
+	    	<apex:actionSupport event="onchange" action="{!fetch}" rerender="ol"/>
+    	</apex:selectList>
+    	<apex:commandbutton value="Get" action="{!fetch}" rerender="ol"/>
+    	<apex:selectRadio >
+    		<apex:selectOption itemValue="IN" itemLabel="India"/>
+    		<apex:selectOption itemValue="SL" itemLabel="Srilanka"/>
+	    	<apex:selectOption itemValue="AUS" itemLabel="Australia"/>
+    	</apex:selectRadio>
+    	  	
+    	
+    	<apex:selectCheckboxes >
+    		<apex:selectOption itemValue="IN" itemLabel="India"/>
+    		<apex:selectOption itemValue="SL" itemLabel="Srilanka"/>
+	    	<apex:selectOption itemValue="AUS" itemLabel="Australia"/>
+    	</apex:selectCheckboxes>
+    	
+    	<apex:outputLabel id="ol" > you have selected {!dispValue}</apex:outputLabel>
+    	
+    </apex:form>
+</apex:page>

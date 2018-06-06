@@ -1,0 +1,4 @@
+<apex:page standardController="account" extensions="myControllerExtension">
+ {!greeting} <p/>
+
+</apex:page>

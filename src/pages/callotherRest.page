@@ -1,0 +1,12 @@
+<apex:page controller="controllerrestcls">
+  <apex:form >
+ <apex:pageBlock >
+   <apex:outputLabel >Name</apex:outputLabel>
+   <apex:inputText value="{!Name}" />
+      <apex:outputLabel >Phone</apex:outputLabel>
+   <apex:inputText value="{!phone}"/>
+
+   </apex:pageBlock>
+   <apex:commandButton value="Callout" action="{!ref}"/>
+  </apex:form>
+</apex:page>

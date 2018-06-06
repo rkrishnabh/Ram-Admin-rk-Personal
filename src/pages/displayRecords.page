@@ -1,0 +1,81 @@
+<apex:page controller="displayrecords" showheader="false" sidebar="false" applyHtmlTag="false">
+   <apex:form >
+  
+ <apex:repeat value="{!conList}" var="obj">
+      
+                   
+
+
+                                       
+                                            
+                                    <apex:inputCheckbox value="{!obj.id}" title="{!obj.id}" label="{!obj.id}">{!obj.lastname}
+                                    </apex:inputCheckbox>
+
+                                    
+                               <apex:outputText value="   {!obj.lastname} "/>
+                            
+                
+
+
+
+                                 
+            
+</apex:repeat>
+   
+   
+   
+   
+   
+   <apex:pageBlock mode="inlineEdit">
+   <table border="1" width="650Px">
+    <tr> 
+      <th> AccountId</th>
+      <th> Fax</th>
+      <th> Phone</th>
+      <th> Id </th>
+      
+    </tr>
+    
+    <apex:repeat value="{!conList}" var="a">
+      <tr>
+        <td> {!a.AccountId} </td>
+        <td> {!a.Fax} </td>
+        <td> {!a.Phone} </td>
+        <td> {!a.Id } </td>
+        <apex:inlineEditSupport showOnEdit="saveButton, cancelButton"
+            hideOnEdit="editButton" event="ondblclick"
+            resetFunction="resetInlineEdit" />
+       
+      </tr>
+     </apex:repeat>
+   </table>
+   </apex:pageBlock>
+   <apex:pageBlock mode="inlineEdit" >
+ <apex:pageBlockTable value="{!conList}" var="b" style="font-size: 40px; font-style: italic; font color:#800080;">
+ <apex:column value="{!b.Fax}"/>
+ <apex:column value="{!b.Phone}"/>
+ <apex:column value="{!b.AccountId}"/>
+ <apex:column value="{!b.Id }"/>
+ <apex:column value="{!b.lastname}"/>
+ 
+ </apex:pageBlockTable>
+ </apex:pageBlock>
+<apex:pageBlock mode="inlineEdit" title="dataTable">
+         <apex:dataTable value="{!conList}" var="le" width="50%">
+             <apex:column value="{!le.Fax}"  headerValue="Name"/> 
+             <apex:column value="{!le.Phone}" headerValue="Phone"/>
+             <apex:column value="{!le.AccountId}" headerValue="Company"/>
+             <apex:column value="{!le.Id }" headerValue="Company"/>
+              <apex:column value="{!le.lastname}" headerValue="Company"/>
+             
+         </apex:dataTable> 
+     </apex:pageBlock> 
+     <div style="align-self:center;">
+     <apex:dataList value="{!conList}" var="item" style="column-gap: 40px;">
+    <apex:outputText value="{!item.Fax}" style="column-gap: 40px;"/>
+     <apex:outputText value="{!item.Id }"/>
+    <apex:outputField value="{!item.Phone}"/>
+</apex:dataList>
+</div>
+ </apex:form>
+</apex:page>

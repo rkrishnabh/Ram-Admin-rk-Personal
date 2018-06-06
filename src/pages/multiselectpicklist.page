@@ -1,0 +1,27 @@
+<apex:page controller="multiselect">
+<apex:form >
+  <apex:panelGrid columns="3" id="abcd">
+            <apex:selectList id="sel1" value="{!leftselected}" multiselect="true" style="width:100px" size="5">
+                <apex:selectOptions value="{!unselectedvalues}" />
+            </apex:selectList>
+            <apex:commandButton action="{!selectclick}" value="submit"/>
+            <table border="1" width="650Px">
+    <tr> 
+      
+      <th> Id </th>
+     
+
+      
+    </tr>
+            <apex:repeat value="{!leftselected}" var="a">
+      <tr>
+        <td> {!a} </td>
+        
+       
+       
+      </tr>
+     </apex:repeat>
+      </table>
+            </apex:panelGrid>
+            </apex:form>
+</apex:page>

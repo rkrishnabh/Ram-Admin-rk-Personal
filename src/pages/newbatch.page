@@ -1,0 +1,24 @@
+<apex:page standardController="Batch__c">
+    <apex:sectionHeader title="Batch Edit" subtitle="New Batch" help="https://www.salesforce.com"/>
+    <apex:form >
+        <div align="center">
+            <apex:image value="{!$Resource.Logo}"/>
+        </div>
+        <apex:pageblock title="Batch Edit" mode="edit">
+            <apex:pageblockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Save & New" action="{!quicksave}" oncomplete="window.location.href = window.location.href;"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageblockButtons>
+            <apex:pageblockSection title="Information" columns="1">
+                <apex:inputField value="{!Batch__c.Training__c}"/>
+                <apex:inputField value="{!Batch__c.Start_Date__c}"/>
+                <apex:inputField value="{!Batch__c.End_Date__c}"/>
+                <apex:inputField value="{!Batch__c.Status__c}"/>
+                <apex:inputField value="{!Batch__c.Session__c}"/>
+                <apex:inputField value="{!Batch__c.Timings__c}"/>
+            </apex:pageblockSection>
+        </apex:pageblock>    
+    </apex:form>
+    
+</apex:page>

@@ -1,0 +1,34 @@
+<apex:page controller="Search">
+<apex:form >
+
+      <apex:pageBlock >
+            <apex:pageBlockSection columns="2">
+                  <apex:pageBlockSectionItem >
+                        Enter the text to search
+                  </apex:pageBlockSectionItem>
+                  <apex:pageBlockSectionItem >
+                        <apex:inputText value="{!searchKeyword}"/>
+                  </apex:pageBlockSectionItem>
+                  <apex:pageBlockSectionItem >
+                        <apex:selectRadio value="{!searchCategory}" >
+                              <apex:selectOption itemValue="account" itemlabel="Member"/>
+                              <apex:selectOption itemValue="Blog__c" itemlabel="Blog"/>
+                              <apex:selectOption itemValue="Photo__c" itemlabel="Photo"/>
+                        </apex:selectRadio>
+                  </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                  <apex:commandButton value="Search" action="{!find}" reRender="result"/>
+            </apex:pageBlockButtons>
+      </apex:pageBlock>
+     
+      <apex:pageBlock id="result" >
+      <apex:pageBlockTable value="{!result}" var="res">
+                  <apex:repeat value="{!objectFields}" var="field">
+                        <apex:column value="{!res[field]}"/>
+                  </apex:repeat>
+      </apex:pageBlockTable>       
+      </apex:pageBlock>
+     
+</apex:form>
+</apex:page>

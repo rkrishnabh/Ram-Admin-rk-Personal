@@ -1,0 +1,55 @@
+<apex:page standardController="Activity_Tacking_System__c" extensions="activityTracking2" docType="html-5.0" sidebar="false">
+  <head>
+   <!-- Bootstrap -->
+        
+ 
+ 
+         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+         <link href="//getbootstrap.com/examples/signin/signin.css" rel="stylesheet" media="screen"/>
+         <title>BootStrapV3 on Visualforce Page by Oyecode</title>
+  
+  
+  </head>
+  
+  <apex:form id="frm">
+      <apex:actionFunction name="showSubActivity" action="{!showSubActivities}" reRender="frm"/>
+      <apex:outputLabel value="Activity: " style="font-weight: normal;font-size:2.0em;"/>
+      <apex:selectList style="font-weight:bold;" styleClass="form-control" value="{!selectedActivity}" size="1" multiselect="false" onchange="showSubActivity()" >
+          <apex:selectOptions value="{!activityItems}"/>
+      </apex:selectList> <br/><br/>
+      <apex:outputLabel value="Sub Activity: " style="font-weight: normal;font-size:2.0em;"/>
+      <apex:actionFunction name="showSubActivityType" action="{!showSubActivityTypes}" reRender="frm"/>
+      <apex:selectList value="{!selectedActivityType}" size="1" multiselect="false" onchange="showSubActivityType()" style="font-weight:bold;" styleClass="form-control">
+          <apex:selectOptions value="{!activityTypeItems}"/>
+      </apex:selectList><br/><br/>
+      <div class="form-group">
+      <apex:outputLabel value="Sub Activity Type: " style="font-weight: normal;font-size:2.0em;"/>
+      <apex:selectList value="{!selectedSubActivityType}"  multiselect="true" style="font-weight:bold;" styleClass="form-control" >
+          <apex:selectOptions value="{!subActivityTypeItems}"/>
+      </apex:selectList><br/><br/>
+      </div>
+      <apex:commandButton value="Get Values" action="{!getValues}" reRender="frm" style="position: relative;left: 280px;" />
+          
+          <apex:actionFunction action="{!saveDetails}" name="saveDetails" reRender="pb"/>
+          
+      <apex:pageBlock id="pb">
+<apex:pageBlockTable value="{!activitytrackwrapper}" var="w" id="pbt">
+<!--<apex:column value="{!w.SubActType.id}"/> -->
+
+<apex:column value="{!w.SubActType.name}" headerValue="Sub Activity Type Name"/>
+
+<apex:column headerValue="Planned Minutes" id="pm">
+<apex:inputField value="{!w.SubActType.Palened__c}" required="true" id="sap"/>
+
+</apex:column>
+<apex:column headerValue="Date">
+<apex:inputField value="{!w.SubActType.Activity_Date__c}" required="true" />
+</apex:column>
+
+</apex:pageBlockTable>
+<apex:pageMessages id="showmsg"></apex:pageMessages>
+<apex:commandButton value="Save" action="{!saveDetails}"  reRender="frm" style="position: relative;left: 280px;"/>
+</apex:pageBlock>
+  </apex:form>
+ 
+</apex:page>

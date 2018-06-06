@@ -1,0 +1,87 @@
+<apex:page sidebar="false" showHeader="false" controller="SA_CJConditionalOffer1_Controller">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300" rel="stylesheet"/>
+  <style>
+ .enable{
+    margin: 0 auto;
+    border: none;
+    border-radius: 4px;
+    padding: 15px 45px;  
+    font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
+    font-size: 16px;
+    font-weight: 200;   
+    cursor:default;
+    background-image: url(http://fl.beedev.net/wp-content/uploads/2017/01/Right-Arrow-White.svg);
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-position: right center;
+    border-right: 30px solid #f2672a;
+    background-color: #f2672a;
+         cursor:pointer;
+    color:#fff;
+}
+ .disabled{
+    margin: 0 auto;
+    border: none;
+    border-radius: 4px;
+    padding: 15px 45px;  
+    font-family: 'Open Sans', Helvetica, Arial, Lucida, sans-serif;
+    font-size: 16px;
+    font-weight: 200;   
+    cursor:default;
+    background-image: url(http://fl.beedev.net/wp-content/uploads/2017/01/Right-Arrow-White.svg);
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-position: right center;
+    border-right: 30px solid #c25222;
+    background-color: #c25222;
+         cursor:default;
+     
+}
+#Continue{left: 1244px;
+    top: 1009px;}
+ </style>
+
+<body> 
+<apex:form id="frm">
+     <div id="Continue"><input type="button" class="disabled" value="Continue" id="btn" onclick="actionFunction();"/></div>
+            <apex:actionFunction name="actionFunction" action="{!getUser}" rerender="frm"/>
+            <div id="Theprocessofhandling"><span style="color: cadetblue; font-size: 14px;">The process of handling data is very important to us. <strong><a style="color: red; text-decoration: none;" href="http://stage.fl-ezlocal.com/terms-and-conditions/">Learn</a></strong> about our Data Security.</span></div>
+                <div id="ConfirmPassword"><input id="confirmpassword"  type="password"  placeholder="confirm password" onKeyUp="check_pass();"/></div>
+            <div id="ConfirmPassword_0"><Label><strong><span style="font-size: 15px;">Confirm Password</span></strong></Label></div>
+            <div id="divCheckPasswordMatch"></div>
+            <div id="Rectangle890">------------------------------------------------------------------------------------</div>
+           
+                <div id="Ciwol5"><input id="password" type="password" size="25" style="border-style:none;color:#000" placeholder="password" /></div>
+            <div id="Password"><Label><strong><span style="font-size: 15px;">Password</span></strong></Label></div>
+            <div id="Rectangle890_0">---------------------------------------------------------------------------------</div>
+            <div id="johnsnow"><output type="User Name" size="25" style="border-style:none;color:#000">{!username}</output></div>
+            <!--<div id="username"><apex:outputLabel value="{!username}"  style="border-style:none;color:#000"></apex:outputLabel></div>-->
+            <div id="UserName"><Label><strong><span style="font-size: 15px;">User Name</span></strong></Label></div>
+            <div id="Rectangle890_1">----------------------------------------------------------------------------------</div>
+            <div id="Congratulationsfirst"><center><strong><span style='color: #f2672a; font-family: "Merriweather", serif; font-size: 35px;'>Congratulations {!firstname}!</span></strong></center><br><br><strong><span style='color: black; font-family: "Merriweather", serif; font-size: 30px;'>{name business} is conditionally approved for a business loan.</span></strong></br></br></div>
+           
+            <div id="Incertainstatessmall" style='color: white; font-family: "Merriweather", serif; font-size: 18px;'>
+                <p>In certain states small business loans are provided by ForwardLine Financial, LLC, a licensed California Finance Lender, license 46039614. In certain other states or because of certain loan attributes, your business loan may be issued by FinWise Bank, a Utah-chartered bank, Member FDIC. All business loans are subject to lender approval. All applicable legal notices, agreements, and disclosures associated with your transaction will clearly identify the lender. </p>
+                <p>If your application for business credit is denied, you have the right to a written statement of the specific reasons for the denial. To obtain the statement, please contact Vice President Underwriting Decisions, ForwardLine Financial, LLC, 21700 Oxnard Street, Ste. 1450, Woodland Hills, CA 91367 or (866) 623-4900 within 60 days from the date you are notified of the decision. We will send you a written statement of reasons for the denial within 30 days of receiving your request for the statement. </p>
+                <p>Notice: The Federal Equal Credit Opportunity Act prohibits creditors form discrimination against credit applicants on the basis of race, color, religion, national origin, sex, marital status, age (provided the applicant has the capacity to enter into a binding contract): because all or part of the applicants income derives from any public assistance program; or because the applicant has in good faith exercised any right under the Consumer Credit Protection Act. The federal agency that administers compliance with this law concerning ForwardLine Financial, LLC is the Federal Trade Commission, Equal Credit Opportunity, Washington, D.C. 20580. The federal agency that administers compliance with this law concerning FinWise Bank is the FDIC Consumer Response Center, 1100 Walnut Street, Box 411, Kansas City, MO 64106. </p>
+            </div>
+           
+            <div id="HaveaquestionCallUs8"><span style='font-family: "Merriweather", serif; font-size: 15px;'>HAVE A QUESTION? CALL US <strong>866.623.4900</strong></span></div>
+           
+            <div id="Createyourusernamean"><span style="font-size: 25px;">Create your username and password now to see your loan application status</span></div>
+  </apex:form>
+ </body>       
+ 
+    <script>
+        function check_pass(){
+        var pass= document.getElementById("password");
+        var confirmPass= document.getElementById("confirmpassword");
+        if(pass.value == confirmPass.value){
+        document.getElementById('btn').className = "enable";
+        }
+        else{
+        document.getElementById('btn').className = "disabled";
+        }
+       } 
+</script>
+       </apex:page>

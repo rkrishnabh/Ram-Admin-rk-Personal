@@ -1,0 +1,43 @@
+<apex:page controller="ActivityTracking" docType="html-5.0">
+  <apex:form id="frm">
+  <apex:commandButton value="Save Details" action="{!saveDetails}" reRender="frm"/>
+Activities: &nbsp;&nbsp;&nbsp;&nbsp;<apex:selectList value="{!Acctivity }" multiselect="false" size="1" style="width:200px;height:25px;">
+<apex:actionSupport event="onchange" reRender="out"/>
+<apex:selectOptions value="{!ActivityData}">
+</apex:selectOptions>
+</apex:selectList> <br/><br/>
+  Activity Type: <apex:selectList value="{!AcctivityTypes}"  multiselect="false" id="out" size="1" style="width:200px;height:25px;" >
+  <apex:actionSupport event="onchange" reRender="out1"/>
+<apex:selectOptions value="{!ActivityTpesData}">
+</apex:selectOptions>
+</apex:selectList><br/><br/>
+Sub Activity Type: <apex:selectList id="out1" multiselect="true" value="{!satid}"  >
+
+<apex:actionSupport event="onchange"  rerender="frm" />
+<apex:selectOptions value="{!subActivityTpesData}">
+</apex:selectOptions>
+</apex:selectList>
+<apex:commandButton value="Get Sub Activity" action="{!displaySubActRecords}" reRender="frm"/>
+
+<apex:pageBlock >
+<apex:pageBlockTable value="{!activitytrackwrapper}" var="w">
+<apex:column value="{!w.satid1.id}"/>
+
+<apex:column value="{!w.satid1.name}"/>
+ 
+<apex:column >
+<apex:inputText value="{!planedhours}" />
+
+</apex:column>
+<apex:column >
+ <apex:input type="date" value="{!dat}" id="date1" onfocus="DatePicker.pickDate(false, this , false);"/>
+
+</apex:column>
+
+</apex:pageBlockTable>
+
+</apex:pageBlock>
+<apex:actionFunction name="doSave" action="{!saveDetails}"/>
+<apex:commandButton value="Save" onclick="doSave()"/>
+  </apex:form>
+</apex:page>

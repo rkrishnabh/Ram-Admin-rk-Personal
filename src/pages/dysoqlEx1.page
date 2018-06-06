@@ -1,0 +1,21 @@
+<apex:page controller="dysoqlEx_controller">
+  <apex:sectionHeader title="example" subtitle="DynamicSOQL"/>
+  <apex:form >
+  
+  <apex:pageBlock >
+  <apex:inputText value="{!SearchStr}"/>
+  <apex:commandButton value="Search" action="{!Search}"/>
+  </apex:pageBlock>
+  <apex:pageBlock >
+  <apex:commandButton value="Go to Aother Page" action="{!goToAnotherPage}"/>
+  </apex:pageBlock>
+  <apex:pageBlock >
+  <apex:pageBlockTable value="{!StList}" var="s">
+  <apex:column value="{!s.name}"/>
+   <apex:column value="{!s.id}"/>
+   
+   
+  </apex:pageBlockTable>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

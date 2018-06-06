@@ -1,0 +1,31 @@
+<aura:component controller="ContactController">
+    <ltng:require styles="/resource/bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css,/resource/bootstrap_multiselect_master/bootstrap-multiselect-master/dist/css/bootstrap-multiselect.css,/resource/SLDS100/assets/styles/salesforce-lightning-design-system-ltng.css" 
+                  scripts="/resource/jquerys,/resource/bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js" afterScriptsLoaded="{!c.scriptsLoaded}" />
+
+    <aura:handler name="init" action="{!c.myAction}" value="{!this}" />
+    <aura:attribute name="contacts" type="Contact[]" />
+    <aura:attribute name="compname" type="String" />
+
+    <div class="slds">
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="multiSelectSpan">{!v.compname}</label>
+            <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                    <span id="{!'multiSelectSpan' + v.compname}">
+                        <ui:inputSelect aura:id="multiSelect"  multiple="true" change="{!c.optionSelected}">
+                            <aura:iteration items="{!v.contacts}" var="contact">
+                                <ui:inputSelectOption text="{!contact.Name}" label="{!contact.Name}"/> 
+                            </aura:iteration>
+                        </ui:inputSelect>
+                    </span>
+                </div>
+            </div>
+         </div>
+         <div class="slds-form-element">
+            <div class="slds-form-element__control" id="{!v.compname}">
+               <!--input boxes for Phone will be dynamically added here--> 
+            </div>
+        </div>
+        <hr></hr>
+    </div>
+</aura:component>

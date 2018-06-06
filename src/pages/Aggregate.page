@@ -1,0 +1,67 @@
+<apex:page controller="Aggregatecls">
+	<apex:form >
+		<apex:pageblock >
+			<apex:pageblocktable value="{!lstwrap}" var="w">
+				<apex:column value="{!w.accName}"/>
+				<apex:column value="{!w.caseCount}"/>					
+			</apex:pageblocktable>
+		</apex:pageblock>
+		
+		<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Account Name', 'Cases'],
+		  <apex:repeat value="{!lstwrap}" var="w">	
+	          ['{!w.accName}',    {!w.caseCount}],
+	      </apex:repeat>    
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
+
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Account Name', 'Case Count'],
+         <apex:repeat value="{!lstwrap}" var="w">	
+	          ['{!w.accName}',    {!w.caseCount}],
+	      </apex:repeat>    
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          vAxis: {title: 'Year',  titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
+	</apex:form>
+</apex:page>

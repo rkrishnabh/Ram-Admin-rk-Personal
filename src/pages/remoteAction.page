@@ -1,0 +1,34 @@
+<apex:page controller="remoteAction" id="pg">
+
+<script>
+	function calls(){
+		var recordId = document.getElementById('pg:fm:pb1:pbs:recId').value;
+		Visualforce.remoting.Manager.invokeAction(
+	        '{!$RemoteAction.remoteAction.query}', 
+	        recordId, 
+	        function(result, event){
+	        	document.getElementById('pg:fm:pb1:pbs:recName').value = result;
+	        }, 
+	        {escape: true}
+    	);
+	}
+</script>
+
+
+	<apex:form id="fm">
+	<apex:actionFunction name="call" action="{!queryData}" rerender="pb"/>
+		<apex:pageblock id="pb" >
+			<apex:pageblocksection >
+				<apex:inputtext onblur="call()" value="{!recId}" label="Record Id"/>
+				<apex:inputtext label="Record Name" value="{!recName}"/>
+			</apex:pageblocksection>
+		</apex:pageblock>
+		
+		<apex:pageblock id="pb1" >
+			<apex:pageblocksection id="pbs" >
+				<apex:inputtext onblur="calls()" label="Record Id" id="recId"/>
+				<apex:inputtext label="Record Name" id="recName"/>
+			</apex:pageblocksection>
+		</apex:pageblock>
+	</apex:form>			
+</apex:page>

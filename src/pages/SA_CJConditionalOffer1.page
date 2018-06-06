@@ -1,0 +1,32 @@
+<apex:page sidebar="false" showHeader="false" controller="SA_CJConditionalOffer1_Controller">
+
+   <style>  
+    #Continue{left: 1050px;top: 1009px;}
+    #background{overflow-x:none; height:1670px;}
+    #bkg_1{bottom:0; z-index:99999;top:1550px;}    
+ </style>
+
+<body>
+    <apex:form id="frm">
+            
+                    
+            
+            <input class="input" id="confirmpassword"  type="Password" size="25"  placeholder="Confirm Password" onKeyUp="check_pass();"/>
+            <div id="ConfirmPassword_0"><Label><strong><span style="font-size: 15px;">Confirm Password</span></strong></Label></div>
+            <div id="divCheckPasswordMatch"></div>
+            <div id="Rectangle890">------------------------------------------------------------------------------------</div>
+            
+                <div id="Ciwol5"><input class="input" id="password" type="Password" size="25" placeholder="Password" value="" onblur="checkPwdValidate();"/>
+                <apex:inputtext id="setPassword" value="{!uPassword}"/>
+                </div>
+            <div id="Password"><Label><strong><span style="font-size: 15px;">Password</span></strong></Label></div>
+            <div id="Rectangle890_0">---------------------------------------------------------------------------------</div>
+            <div id="johnsnow"><output type="User Name" size="25" >{!username}</output></div>
+            <div id="UserName"><Label><strong><span style="font-size: 15px;">User Name</span></strong></Label></div>
+            <apex:actionFunction name="actionFunctionJS" action="{!getUser}" />
+                    <input type="button" style="display:none;" class="disabled" value="Continue" id="btn" onclick="actionFunctionJS();"/>
+    <apex:commandButton value="continue" action="{!getUser}"/>
+     </apex:form>
+ </body>       
+    
+</apex:page>

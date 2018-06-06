@@ -1,0 +1,13 @@
+<apex:page controller="user1">
+<apex:form >
+<apex:selectList size="1">
+<apex:selectOptions value="{!items}"/ >
+
+
+
+
+
+</apex:selectList>
+
+</apex:form>
+</apex:page>

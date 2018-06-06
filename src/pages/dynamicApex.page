@@ -1,0 +1,11 @@
+<apex:page controller="dynamiccls">
+	<apex:form >
+		<apex:pageblock >
+			<apex:pageblocktable value="{!lstWrap}" var="o">
+				<apex:column style="background:{!o.color}" value="{!o.objName}"/>
+				<apex:column style="{!IF(o.objType == 'Custom Object','background:green','background:red')}" value="{!o.objType}"/>
+				<apex:column value="{!o.prefix}"/>
+			</apex:pageblocktable>
+		</apex:pageblock>
+	</apex:form>	
+</apex:page>

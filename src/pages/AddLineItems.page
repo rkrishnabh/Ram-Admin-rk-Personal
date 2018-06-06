@@ -1,0 +1,30 @@
+<apex:page controller="AddLineItems">
+	<apex:form >
+		<apex:pageblock id="pb">
+			<apex:pageblocktable value="{!lstwrap}" var="w">
+				<apex:column headerValue="Account Name">
+					<apex:inputField value="{!w.acc.name}"/>
+				</apex:column>		
+				<apex:column headerValue="Account Phone">
+					<apex:inputField value="{!w.acc.Phone}"/>
+				</apex:column>		
+				<apex:column headerValue="Account Fax">
+					<apex:inputField value="{!w.acc.fax}"/>
+				</apex:column>
+				
+				<apex:column headerValue="Account Index">
+					<apex:outputlabel value="{!w.index}"/>
+				</apex:column>		
+				<apex:column headerValue="Action">
+					<apex:commandButton value="Add" rendered="{!IF(lstwrap.size -1 = w.index,true,false)}" action="{!addAccount}" rerender="pb"/>
+					<apex:commandButton rendered="{!IF(lstwrap.size==1,false,true)}" value="Remove" action="{!removeAccount}" rerender="pb">
+						<apex:param value="{!w.index}" assignTo="{!rowIndex}" name="e"/>
+					</apex:commandButton>
+				</apex:column>		
+			</apex:pageblocktable>
+			<apex:pageblockbuttons >
+				<apex:commandButton value="Save" action="{!saveRecords}"/>
+			</apex:pageblockbuttons>
+		</apex:pageblock>
+	</apex:form>
+</apex:page>

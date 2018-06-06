@@ -1,0 +1,47 @@
+<apex:page standardController="account" showHeader="true" sidebar="false">
+    <!--<style>
+    .vfHelpText a{position:relative; white-space: normal;}
+    .vfHelpText a span {display: none;}
+    .vfHelpText a:hover span {display: block; position:absolute; top:1.25em; padding:2px 5px; left:0em; width:15em;z-index:100;border:1px solid orange;background-color:#FEFDB9;color:black;}
+    </style>
+  <span class="vfHelpText">
+     <apex:outputLink value="" styleClass="helpButton" >
+         <img src="/s.gif" alt="" class="helpOrb"/>
+               <span>{!account.name}.</span>
+     </apex:outputLink>
+ </span>-->
+ 
+    <!-- Style Panel Satrts--->   
+    <style type="text/css">   
+        .imgclass:hover{   
+            background-image: url(/img/help/helpOrbs.gif);   
+            background-repeat: no-repeat;   
+            width: 16px;   
+            height: 15px;      
+            background-position: right;   
+          
+        }   
+        .imgclass{   
+            background-image: url(/img/help/helpOrbs.gif);   
+            background-repeat: no-repeat;   
+            width: 16px;   
+            height: 15px;   
+        }   
+    </style>   
+    <!-- Style Panel Ends--->   
+    <apex:form >   
+        <apex:pageBlock >   
+            <apex:pageBlockSection title="Enter Information">   
+                <apex:pageblockSectionItem >   
+                    <apex:outputPanel >   
+                        <apex:outputlabel value="{!Account.Name}"/>                                           
+                        <img src="/s.gif" Class="imgclass" title="{!Account.Name}" />   
+                    </apex:outputPanel>   
+                    <apex:inputField value="{!Account.Name}"/>                 
+                </apex:pageblockSectionItem>   
+            </apex:pageBlockSection>   
+        </apex:pageBlock>   
+    </apex:form>      
+
+        
+ </apex:page>

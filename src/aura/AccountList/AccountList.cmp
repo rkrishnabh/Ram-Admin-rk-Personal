@@ -1,0 +1,18 @@
+<aura:component controller="accountRelatedContacts">
+
+    <aura:attribute name="accounts" type="Account[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<aura:handler event="c:SearchKeyChange" action="{!c.searchKeyChange}"/>
+   <ul class="list-group">
+        <aura:iteration items="{!v.accounts}" var="account">
+            <li class="list-group-item">
+                <a href="{! '#account/' + account.Id }">
+                    <p>{!account.Id}</p>
+                    <p>{!account.Name}</p>
+                    <p>{!account.Phone}</p>
+                </a>
+            </li>
+        </aura:iteration>
+    </ul>
+
+</aura:component>

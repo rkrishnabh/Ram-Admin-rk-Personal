@@ -1,0 +1,83 @@
+<apex:page controller="displayrecords" showheader="false" sidebar="false" applyHtmlTag="false"  id="pg">
+<head>
+<apex:includeScript value="{!URLFOR($Resource.jQueryFiles, '/js/jquery-1.4.4.min.js')}"  />
+<apex:includeScript value="{!URLFOR($Resource.jQueryFiles, '/js/jquery-ui-1.8.7.custom.min.js')}"  />
+<apex:stylesheet value="{!URLFOR($Resource.jQueryFiles, '/css/ui-lightness/jquery-ui-1.8.7.custom.css')}"  />
+
+<script>
+   $j = jQuery.noConflict();
+   alert('-------');
+    $j(document).ready(function() {
+    //var brand = $j('#text').val(); 
+  
+    
+            $j( "#dialog-1" ).dialog({
+               autoOpen: false,  
+            });
+            $j( "#opener" ).click(function() {
+               $j( "#dialog-1" ).dialog( "open");
+                //alert(brand );
+                var brand = $j('#text').val();
+                //var contactTable =j$('[id$="tdata"]');
+                //var brand = $j('#tdata').val();
+               
+              $j("#output").html("<b>MY name is: </b>" + brand);
+              
+               
+            });
+         });
+        
+
+ 
+</script>
+  
+
+</head>    
+  
+<body>
+
+
+    First name:<br></br>
+    
+    <input type="text" name="firstname" value="ramakrishna" id="text"/>
+  
+  
+  <br></br>
+  
+  <div id="dialog-1" title="Dialog Title goes here...">This my first jQuery UI Dialog!
+  <div id="output"></div>
+  
+  </div>
+      <button id="opener">Open Dialog</button>
+    
+  
+  
+</body>
+
+<table border="1" width="650Px" id="tdata">
+    <tr> 
+      <th> AccountId</th>
+      <th> Fax</th>
+      <th> Phone</th>
+      <th> Id </th>
+      
+    </tr>
+    
+    <apex:repeat value="{!conList}" var="a" id="rept">
+      <tr>
+      
+        <td> <a href="#" onclick="openPopup4('{!a.AccountId}','{!a.AccountId}')">{!a.AccountId}</a> </td>
+        <td> {!a.Fax} </td>
+        <td> {!a.Phone} </td>
+        <td> {!a.Id } </td>
+       
+       
+       
+      </tr>
+     </apex:repeat>
+   </table>
+
+
+
+
+</apex:page>

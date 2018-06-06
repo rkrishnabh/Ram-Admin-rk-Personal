@@ -1,0 +1,26 @@
+<aura:component controller="sendEmail">
+
+   
+   <aura:attribute name="status"  type="String[]" default="Open, Closed, Closed Won, Any"/>
+    <aura:attribute name="checkedStatus" type="String[]" />
+    <aura:attribute name="Email" type="string" />
+    <aura:attribute name="Name" type="string" />
+    
+   
+        <aura:iteration items="{!v.status}" var="s">
+          
+             <!--<ui:inputCheckbox aura:id="checkbox1" label="{!s}"  text="{!s}" change="{!c.onCheck1}" />-->
+            <ui:inputCheckbox aura:id="checkbox1" label="{!s}"  text="{!s}"   change="{!c.SendEmailUsingCheckbox}"/>
+            
+            </aura:iteration>
+         <p><ui:outputText class="result" aura:id="checkvalue2" value="false" /></p>
+ 
+    <ui:inputEmail aura:id="email" label="Email" class="field" value="manager@email.com"/>  
+    <ui:button class="btn" label="Submit" press="{!c.SendEmail1}"/> 
+
+ <div aura:id="msg" class="hide">
+     You entered: <ui:outputEmail aura:id="oEmail" value="Email" />
+     You entered name: <ui:outputEmail aura:id="oName" value="Name" />
+ </div>
+
+</aura:component>

@@ -1,0 +1,8 @@
+<apex:page sidebar="false" Controller="sortingwapperstcapcustsett" showHeader="true" id="pg">
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!code}" var="m">
+            <apex:column value="{!m.Name}"/>
+            <apex:column value="{!m.Poplaction__c}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

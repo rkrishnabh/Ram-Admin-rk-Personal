@@ -1,0 +1,27 @@
+<apex:page showHeader="false" controller="print" >
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />
+    <apex:stylesheet value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.css"/>
+
+<script>
+        function highlightElem(elem){
+            $('tr').removeClass('ui-state-highlight');
+            $(elem).parent().addClass('ui-state-highlight');
+        }
+    </script>
+    <style>
+.red {background-color : red}
+.green {background-color : green}
+</style>
+  <apex:panelGrid width="100%" style="text-align:right;">
+        <apex:form >
+            <apex:commandLink value="Print" onclick="window.print();"/>
+        </apex:form>
+    </apex:panelGrid>
+    <apex:pageBlock title="Training Information">
+        <apex:pageBlockTable value="{!TrainingList }" var="m" rowclasses="red,green" >
+            <apex:column value="{!m.Name}"  onclick="highlightElem(this)"   / >
+            <apex:column value="{!m.id}" onclick="highlightElem(this)"  / >
+                   </apex:pageBlockTable>
+    </apex:pageBlock>
+
+  </apex:page>

@@ -1,0 +1,8 @@
+<apex:page >
+    <apex:panelGrid columns="2">
+        <apex:pageblock title="titleA" id="blockA">
+        </apex:pageblock>
+        <apex:pageblock title="titleB" id="blockB">
+        </apex:pageblock>
+    </apex:panelGrid>
+</apex:page>

@@ -1,0 +1,12 @@
+<apex:page controller="sampleCon">
+
+
+   <apex:form >
+        <apex:selectRadio value="{!country}" layout="pageDirection">
+            <apex:selectOptions value="{!items}"/>
+            </apex:selectRadio>
+            <apex:commandButton value="Test" action="{!test}" rerender="out" status="status"/>
+     </apex:form>
+     
+      
+</apex:page>

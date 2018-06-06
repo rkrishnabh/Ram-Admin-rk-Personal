@@ -1,0 +1,51 @@
+<apex:page showheader="false" standardController="Account" recordsetVar="accounts" >
+<head>
+<apex:includeScript value="{!URLFOR($Resource.jQueryFiles, '/js/jquery-1.4.4.min.js')}"  />
+<apex:includeScript value="{!URLFOR($Resource.jQueryFiles, '/js/jquery-ui-1.8.7.custom.min.js')}"  />
+<apex:stylesheet value="{!URLFOR($Resource.jQueryFiles, '/css/ui-lightness/jquery-ui-1.8.7.custom.css')}"  />
+<script>
+   $j = jQuery.noConflict();
+   alert('-------');
+    $j(document).ready(function() {
+    //var brand = $j('#text').val(); 
+  
+    
+            $j( "#dialog-1" ).dialog({
+               autoOpen: false,  
+            });
+            $j( "#opener" ).click(function() {
+               $j( "#dialog-1" ).dialog( "open");
+                //alert(brand );
+                var brand = $j('#text').val();
+              $j("#output").html("<b>MY name is: </b>" + brand);
+              
+               
+            });
+         });
+        
+
+ 
+</script>
+  
+
+</head>    
+  
+<body>
+
+
+    First name:<br></br>
+    
+    <input type="text" name="firstname" value="ramakrishna" id="text"/>
+  
+  
+  <br></br>
+  
+  <div id="dialog-1" title="Dialog Title goes here...">This my first jQuery UI Dialog!
+  <div id="output"></div>
+  
+  </div>
+      <button id="opener">Open Dialog</button>
+  
+  
+</body>
+</apex:page>

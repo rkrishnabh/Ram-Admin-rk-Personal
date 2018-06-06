@@ -1,0 +1,35 @@
+<apex:page controller="activityTrackingcontroller1" docType="html-5.0">
+  <apex:form id="frm">
+      <apex:actionFunction name="showSubActivity" action="{!showSubActivities}" reRender="frm"/>
+      <apex:selectList value="{!selectedActivity}" size="1" multiselect="false" onchange="showSubActivity()" style="width:200px;height:25px;">
+          <apex:selectOptions value="{!activityItems}"/>
+      </apex:selectList> <br/><br/>
+      
+      <apex:actionFunction name="showSubActivityType" action="{!showSubActivityTypes}" reRender="frm"/>
+      <apex:selectList value="{!selectedActivityType}" size="1" multiselect="false" onchange="showSubActivityType()" style="width:200px;height:25px;">
+          <apex:selectOptions value="{!activityTypeItems}"/>
+      </apex:selectList><br/><br/>
+      
+      <apex:selectList value="{!selectedSubActivityType}" size="1" multiselect="true" style="width:200px;height:100px;" >
+          <apex:selectOptions value="{!subActivityTypeItems}"/>
+      </apex:selectList>
+      <apex:commandButton value="Get Values" action="{!getValues}" reRender="frm"/>
+      <apex:pageBlock >
+<apex:pageBlockTable value="{!activitytrackwrapper}" var="w">
+<apex:column value="{!w.satid1.id}"/>
+
+<!--<apex:column value="{!w.satid1.name}"/>-->
+
+<apex:column headerValue="Planned Hours">
+<apex:inputField value="{!w.satid1.Palened__c}" />
+
+</apex:column>
+<apex:column headerValue="Date">
+<apex:inputField value="{!w.satid1.Activity_Date__c}" />
+</apex:column>
+
+</apex:pageBlockTable>
+<apex:commandButton value="Save" action="{!saveDetails}" reRender="frm"/>
+</apex:pageBlock>
+  </apex:form>
+</apex:page>

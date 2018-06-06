@@ -1,0 +1,35 @@
+<apex:page standardController="Account" recordSetVar="recs" extensions="recordscls">
+    <apex:form >
+        <apex:pageblock >
+          
+                <apex:pageblocktable id="pbt" value="{!recs}" var="a" >
+                     <apex:column headerValue="Account Name">
+                         <apex:commandLink value="{!a.name}" reRender="op" status="stat">
+                             <apex:param value="{!a.Id}" name="rId"/>
+                         </apex:commandLink>
+                     </apex:column>
+                     <apex:column value="{!a.phone}"/>
+                     <apex:column value="{!a.fax}"/>
+                </apex:pageblocktable>    
+        
+            
+            <apex:commandLink value="Previous" action="{!previous}" reRender="pbt" status="stat"/>&nbsp;|&nbsp;
+            <apex:commandLink value="First" action="{!first}" reRender="pbt" status="stat"/>&nbsp;|&nbsp;
+            <apex:commandLink value="Last" action="{!last}" reRender="pbt" status="stat"/> &nbsp;|&nbsp;
+            <apex:commandLink value="Next" action="{!next}" reRender="pbt" status="stat"/>
+            <apex:outputPanel id="op">
+                <apex:actionStatus id="stat">
+                    <apex:facet name="start">
+                        <apex:image value="{!$Resource.Loading}" style="width:100px;height:100px;position: absolute;margin-left: 165px;margin-top: -112px;"/>                   
+                    </apex:facet>
+                   <apex:facet name="stop">
+                        <apex:detail subject="{!$CurrentPage.parameters.rId}" relatedList="false" inlineEdit="true"/>                        
+                    </apex:facet>           
+                </apex:actionStatus>
+            
+
+            </apex:outputPanel>
+            
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,47 @@
+<apex:page controller="customrecordscls">
+<script>
+    function check(){
+        var res = confirm('R u sure you want del this record....');
+        return res;
+    }
+</script>
+    <apex:form >
+        <apex:pageBlock >
+        <table width="100%">
+            <tr>
+                <td width="40%">
+                    <apex:inputText value="{!searchText}" />
+                    <apex:commandButton value="Search" action="{!doSearch}"/>
+                    <apex:commandLink value="View All" action="{!doViewAll}"/>
+                </td>
+                <td width="60%">
+                    <apex:commandLink value="A" action="{!searchByAlpha}">
+                        <apex:param value="A" assignTo="{!alpha}" name="a"/>
+                    </apex:commandLink>
+                    &nbsp;|&nbsp;
+                    <apex:commandLink value="B" action="{!searchByAlpha}">
+                        <apex:param value="B" assignTo="{!alpha}" name="bc"/>
+                    </apex:commandLink>
+                    &nbsp;|&nbsp;
+                    <apex:commandLink value="C"/>&nbsp;|&nbsp;
+                    <apex:commandLink value="D"/>
+                </td>
+            </tr>
+        </table>        
+            <apex:pageblockTable value="{!lst}" var="a">
+                <apex:column headerValue="Action">
+                    <apex:commandLink value="Edit" action="/{!a.Id}/e"/>&nbsp;|&nbsp;
+                    <apex:commandLink value="Del" onclick="return check();" action="{!deleteRecord}">
+                        <apex:param value="{!a.Id}" assignTo="{!recId}" name="p"/>
+                    </apex:commandLink>
+                </apex:column>
+                <apex:column headerValue="Account Name" >
+                    <apex:commandLink value="{!a.name}" action="/{!a.Id}"/>
+                </apex:column>
+                <apex:column value="{!a.phone}"/>
+                <apex:column value="{!a.fax}"/>
+                <apex:column value="{!a.Country__c}"/>
+            </apex:pageblockTable>
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>

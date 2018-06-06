@@ -1,0 +1,18 @@
+<apex:page controller="picklist2cls">
+    <apex:form >
+        <apex:actionFunction name="call" action="{!fetch}" rerender="op"/>
+        <apex:selectList value="{!selectedAcc}" size="1" onchange="call()">
+            <apex:selectOptions value="{!accoptions}"/>
+            <!-- <apex:actionSupport event="onchange" action="{!fetch}" rerender="op"/>-->
+           
+        </apex:selectList>
+        
+         <br></br>
+        <apex:commandButton value="Get Contacts" action="{!fetch}"/>
+        <apex:outputpanel id="op">
+            <apex:selectList size="1" id="sl" style="width:150px" rendered="{!show}">
+                <apex:selectOptions value="{!conoptions}"/>
+            </apex:selectList>
+        </apex:outputpanel>
+    </apex:form>
+</apex:page>

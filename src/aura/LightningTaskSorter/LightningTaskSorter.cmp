@@ -1,0 +1,49 @@
+<!--<aura:component controller="TaskSorterController" implements="force:appHostable,flexipage:availableForAllPageTypes">-->
+<aura:component controller="AccountListController" implements="force:appHostable,flexipage:availableForAllPageTypes">  
+
+    <aura:attribute name="tasks" type="Task[]" />
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <div aura:id="aura-cmp">
+        <nav>
+            <ul>
+                <li class="selected" aura:id="dateSort">
+                    <a href="#" class="date" onclick="{!c.dateSortClick}">
+                        <!-- Date Sort -->
+                        <ui:outputText value="Data Sort" />
+                    </a>
+                </li>
+                <li aura:id="titleSort">
+                    <a href="#" class="name" onclick="{!c.titleSortClick}">
+                        <!-- Subject Sort -->
+                        <ui:outputText value="Title Sort " />
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div id="{!globalId + '_taskArea'}" class="taskList floatClear">
+            <ul>
+                <aura:iteration items="{!v.tasks}" var="item" indexVar="index">
+                    <li>
+                        <div class="cards each">
+                            <div class="picCaption">
+                              <!-- <p data-key-value="{!item.ActivityDate}">
+                                    <ui:outputText value="{!item.ActivityDate}" />
+                                </p>
+                                <p data-key-value="{!item.Subject}">
+                                    <ui:outputText value="{!item.Subject}" class="taskSubject" />
+                                </p>-->
+                                 <p data-key-value="{!item.Name}">
+                                    <ui:outputText value="{!item.Name}" />
+                                </p>
+                                <p data-key-value="{!item.Name}">
+                                    <ui:outputText value="{!item.Name}" class="taskSubject" />
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </aura:iteration>
+            </ul>
+        </div>
+    </div>
+     <force:inputField aura:id="acc" value="{!v.Contact.Account.ParentId}" />
+</aura:component>

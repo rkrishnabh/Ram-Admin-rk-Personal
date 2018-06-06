@@ -1,0 +1,29 @@
+<apex:page controller="Selectlistcls">
+  <apex:form >
+      <apex:selectList value="{!selected}" size="1"  >
+              <apex:selectoptions value="{!items}"/>
+              
+              
+              
+      </apex:selectList>
+      <apex:commandButton value="Select" action="{!display}"/>
+      <table border="1" width="650Px">
+    <tr> 
+      
+      <th> Id </th>
+      <th> Name</th>
+
+      
+    </tr>
+    
+    <apex:repeat value="{!lstaccount1}" var="a">
+      <tr>
+        <td> {!a.id} </td>
+        <td> {!a.name} </td>
+       
+       
+      </tr>
+     </apex:repeat>
+   </table>
+  </apex:form>
+</apex:page>

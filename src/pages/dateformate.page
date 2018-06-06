@@ -1,0 +1,188 @@
+<apex:page title="Date and Number Formatting in Visualforce Page">
+<apex:outputText value="{!$Profile.Name}"/>
+<br/>
+<apex:outputText value="{!$User.FirstName}"/>
+<style>
+.tableContent {
+border: 1px solid green;
+font: 12px, Verdana;
+}
+.tableHeader {
+background-color: green;
+font: 16px, Verdana;
+color: white;
+}
+.bold {
+font-weight: bold;
+}
+</style>
+<table border="0" cellspacing="2" cellpadding="6" class="tableContent">
+<tr class="tableHeader">
+<th>
+    Format
+</th>
+<th>
+    Input
+</th>
+<th>
+    Output
+</th>
+</tr>
+<tr>
+<td>
+    <apex:outputtext value="{0, date, short}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{!NOW()}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{0, date, short}">
+        <apex:param value="{!NOW()}"></apex:param>
+    </apex:outputtext>
+</td>
+</tr>
+<tr>
+<td>
+    <apex:outputtext value="{0, date, medium}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{!NOW()}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{0, date, medium}">
+        <apex:param value="{!NOW()}"></apex:param>
+    </apex:outputtext>
+</td>
+</tr>
+<tr>
+<td>
+    <apex:outputtext value="{0, date, long}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{!NOW()}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{0, date, long}">
+        <apex:param value="{!NOW()}"></apex:param>
+    </apex:outputtext>
+</td>
+</tr>
+<tr>
+<td>
+    <apex:outputtext value="{0, date, full}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{!NOW()}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{0, date, full}">
+        <apex:param value="{!NOW()}"></apex:param>
+    </apex:outputtext>
+</td>
+</tr>
+<tr>
+<td>
+    <apex:outputtext value="{0, date, yyyy-mm-dd hh:mm:ss a}" styleClass="bold"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{!NOW()}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{0, date, yyyy-MMM-dd hh:mm:ss a z}">
+        <apex:param value="{!NOW()}"></apex:param>
+    </apex:outputtext>
+</td>
+</tr>
+<tr>
+<td>
+    <apex:outputtext value="{0, number, integer}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{!VALUE('123.456')}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{0, number, integer}">
+        <apex:param value="{!VALUE('123.456')}"></apex:param>
+    </apex:outputtext>
+</td>
+</tr>
+<tr>
+<td>
+    <apex:outputtext value="{0, number, currency}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{!VALUE('123.456')}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{0, number, currency}">
+        <apex:param value="{!VALUE('123.456')}"></apex:param>
+    </apex:outputtext>
+</td>
+</tr>
+<tr>
+<td>
+    <apex:outputtext value="{0, number, percent}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{!VALUE('0.5')}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{0, number, percent}">
+        <apex:param value="{!VALUE('0.5')}"></apex:param>
+    </apex:outputtext>
+</td>
+</tr>
+<tr>
+<td>
+    <apex:outputtext value="{0, number, 0000.0}" styleClass="bold"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{!VALUE('123.456')}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{0, number, 0000.0}">
+        <apex:param value="{!VALUE('123.456')}"></apex:param>
+    </apex:outputtext>
+</td>
+</tr>
+<tr>
+<td>
+    <apex:outputtext value="{0, number, ####.#}" styleClass="bold"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{!VALUE('123.456')}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{0, number, ####.#}">
+        <apex:param value="{!VALUE('123.456')}"></apex:param>
+    </apex:outputtext>
+</td>
+</tr>
+<tr>
+<td>
+    <apex:outputtext value="{0, number, 0.0000}" styleClass="bold"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{!VALUE('123.456')}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{0, number, 0.0000}">
+        <apex:param value="{!VALUE('123.456')}"></apex:param>
+    </apex:outputtext>
+</td>
+</tr>
+<tr>
+<td>
+    <apex:outputtext value="{0, number, #.####}" styleClass="bold"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{!VALUE('123.456')}"></apex:outputtext>
+</td>
+<td>
+    <apex:outputtext value="{0, number, #.####}">
+        <apex:param value="{!VALUE('123.456')}"></apex:param>
+    </apex:outputtext>
+</td>
+</tr>
+</table>
+</apex:page>

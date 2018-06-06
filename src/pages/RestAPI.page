@@ -1,0 +1,78 @@
+<apex:page standardStylesheets="false" showHeader="false" sidebar="false">
+ 
+<script type="text/javascript">
+    window.addEventListener("message", messageHandler, false);
+    window.parent.postMessage({"type": "ready"}, "*");
+    
+    function messageHandler(event) {
+        var data = event.data;
+        var type = data.type;
+        //make request if the message type from parent window is 'request'
+        if (type === "request") {
+            sendRequest(data.xhrConfig);    
+        }
+    }
+    
+    function sendRequest(xhrConfig) {
+        var req = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+        var t1 = 0;
+        var t2 = 0;
+        req.onreadystatechange = function() {
+            if (req.readyState != 4) {
+                return;
+            } 
+            t2 = Date.now();
+            var response = {
+                status: req.status,
+                statusText: req.statusText,
+                body: req.response,
+                type: req.responseType,
+                headers: req.getAllResponseHeaders(),
+                xhrConfig: xhrConfig,
+                clientTime: (t2 - t1)
+            };
+            
+            if (req.responseType === "xml") {
+                response.xml = req.responseXML;
+            }
+            
+            window.parent.postMessage({"type": "response", "response": response}, "*");
+        }
+        
+     
+        
+        if (xhrConfig.url.indexOf("http") < 0) {
+            req.open(xhrConfig.method, xhrConfig.url, true);
+            
+            // Set the Authorization header for local calls
+            req.setRequestHeader("Authorization", 'Bearer {!$Api.Session_ID}');
+            
+        } else {
+            // Use the proxy
+            req.open(xhrConfig.method, "/services/proxy", true);
+            
+            // Set the endpoint accordingly for using the proxy
+            req.setRequestHeader("SalesforceProxy-Endpoint", xhrConfig.url);
+            
+        }
+        
+        if (xhrConfig.headers) {
+            for (var key in xhrConfig.headers) {
+                req.setRequestHeader(key, xhrConfig.headers[key]);
+            }
+        }
+        
+        // Not necessary when using proxy?
+        req.setRequestHeader("Access-Control-Allow-Origin", "*");       
+        req.responseType = xhrConfig.responseType || "json";
+        
+        if (xhrConfig.method === "POST") {
+            t1 = Date.now();
+            req.send(xhrConfig.body);
+        } else {
+            t1 = Date.now();
+            req.send();
+        }      
+    }
+    </script> 
+</apex:page>

@@ -1,0 +1,12 @@
+<apex:page controller="OwnerEmailID" >
+ <apex:form >
+ <apex:commandButton value="Click" action="{!show}"/>
+ <apex:pageBlock >
+ <apex:pageBlockTable value="{!OEI}" var="a">
+ <apex:column value="{!a.Id}"/>
+ <apex:column value="{!a.AccountId}"/>
+ 
+ </apex:pageBlockTable>
+ </apex:pageBlock>
+ </apex:form>
+</apex:page>

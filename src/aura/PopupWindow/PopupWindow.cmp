@@ -1,0 +1,12 @@
+<aura:component > 
+   From Lightning Component
+ <aura:attribute name="Name" type="String"/>
+    <input type="Text" id="test" label="TEXT" />
+  <ui:button aura:id="send" label="Send To VF" press="{!c.Sendmessage}"/>
+    <p>
+  
+</p>
+  <iframe id="iframesender" src="https://rk1988-dev-ed--ctrla51.na15.visual.force.com/apex/postmesseag" width="400" height="200">
+                  <p>Your browser does not support iframes.</p>
+                </iframe> 
+</aura:component>

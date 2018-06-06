@@ -1,0 +1,24 @@
+<apex:page controller="trackEvents">
+<apex:form id="frm">
+<apex:outputLabel >Activity: &nbsp;&nbsp; </apex:outputLabel>
+ <apex:inputfield value="{!eT.Activity__c}"/> <br/>
+ <apex:outputLabel >Activity Type: &nbsp;&nbsp; </apex:outputLabel>
+ <apex:inputfield value="{!eT.Activity_Type__c}"/><br/>
+ <apex:outputLabel >Sub Activity: &nbsp;&nbsp; </apex:outputLabel>
+ <!--<apex:inputField value="{!eT.SubActivity__c}" / >--><br/>
+ <apex:actionFunction name="showSelectedValues" action="{!showsubactivityvalues}" reRender="frm"/>
+ <apex:inputField value="{!eT.SubActivity__c}" onchange="showSelectedValues()" />
+ 
+     <apex:commandButton value="Getactivities" action="{!DisplayRecords}"/>
+  <apex:repeat value="{!tempselectedvalues}" var="string">
+        <apex:outputText value="{!string}" /><br/>
+    </apex:repeat>
+    
+    <apex:repeat value="{!wrappers }" var="ST">
+        <apex:outputText value="{!ST}" /><br/>
+    </apex:repeat>
+    
+    
+    
+ </apex:form>
+</apex:page>

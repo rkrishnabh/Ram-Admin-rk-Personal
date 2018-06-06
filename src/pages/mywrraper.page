@@ -1,0 +1,15 @@
+<apex:page controller="Mywrapper">
+
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockTable value="{!items}" var="i">
+<apex:column headerValue="Check">
+<apex:inputCheckbox value="{!i.check}"/>
+</apex:column>
+<apex:column value="{!i.con.name}"/>
+<apex:column value="{!i.con.email}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:form>
+ 
+</apex:page>

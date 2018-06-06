@@ -1,0 +1,13 @@
+<apex:page controller="wrapper1cls">
+	<apex:form >
+		<apex:pageblock >
+			<apex:pageblocktable value="{!lstEmp}" var="e">	
+				<apex:column value="{!e.eName}"/>
+				<apex:column value="{!e.ePhone}"/>
+				<apex:column value="{!e.eEmail}"/>
+				<apex:column value="{!e.eSal}"/>
+				<apex:column value="{!e.eAnnual}"/>
+			</apex:pageblocktable>
+		</apex:pageblock>
+	</apex:form>
+</apex:page>

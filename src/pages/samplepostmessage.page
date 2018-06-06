@@ -1,0 +1,19 @@
+<apex:page >
+
+ <div id="test">Send me a message!</div>
+<script>
+window.onload = function listener(event){
+alert('----');
+  if ( event.origin !== "https://rk1988-dev-ed--ctrla51.na15.visual.force.com" )
+    return
+alert('----');
+  document.getElementById("test").innerHTML = "received: "+event.data
+}
+
+if (window.addEventListener){
+  addEventListener("message", listener, false)
+} else {
+  attachEvent("onmessage", listener)
+}
+</script>
+</apex:page>

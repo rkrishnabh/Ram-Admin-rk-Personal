@@ -1,0 +1,50 @@
+<aura:component implements="force:appHostable">
+	
+    <div style="width: 90%; padding-left: 10px;">
+    Type ahead lookup demo
+    PickList Opportunity Account
+    Contact Lookup (client, startsWith)
+    <br/>
+    <c:autoComplete clientServer="client" 
+                    objectName="Contact" 
+                    searchField="email" 
+                    startsWith="true" />  
+        
+	<br/><br/>     
+        
+    Contact Lookup (client, contains)
+    <br/>
+    <c:autoComplete clientServer="client" 
+                    objectName="Contact" 
+                    searchField="Name" 
+                    startsWith="false" />  
+        
+	<br/><br/>            
+        
+    Contact Lookup (server)
+    <br/>
+    <c:autoComplete clientServer="server" 
+                    objectName="Contact" 
+                    searchField="phone" />  
+        
+	<br/><br/>             
+        
+        
+    Account Lookup
+    <br/>
+    <c:autoComplete clientServer="client" 
+                    objectName="Account" 
+                    searchField="Name" />          
+        
+        
+    </div>
+    
+    
+
+
+
+
+    
+    
+
+</aura:component>

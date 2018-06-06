@@ -1,0 +1,20 @@
+<apex:page controller="MultiSelectListCls" >
+ <apex:form >
+  <apex:panelGrid columns="3">
+
+<apex:selectList multiselect="true" value="{!SelectedValue}">
+ <apex:selectOptions value="{!LeftOptions}"></apex:selectOptions>
+ </apex:selectList>
+<apex:panelGroup >
+<br/>
+<apex:commandButton value="Add" action="{!add}"/><br/><br/>
+<apex:commandButton value="Remove" action="{!remove}"/>
+</apex:panelGroup>
+<apex:selectList multiselect="true" value="{!RemovedValue}" size="10">
+ <apex:selectOptions value="{!RightOptions}"></apex:selectOptions>
+ </apex:selectList>
+</apex:panelGrid>
+
+
+</apex:form>
+</apex:page>

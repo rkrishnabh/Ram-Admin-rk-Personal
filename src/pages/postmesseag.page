@@ -1,0 +1,45 @@
+<apex:page >
+<apex:form >
+  <p id="received-message">I've heard nothing yet</p>
+  
+  <apex:commandButton onclick="displayMessage();" value="Click Me"/>
+</apex:form>
+  ramakrisshna-----
+ 
+    <apex:includeLightning />
+    <div id="lightning" />
+    <script>
+        $Lightning.use("c:PopupWindowAPP", function() {
+            $Lightning.createComponent("c:PopupWindow",
+                { label : "" },
+                "lightning",
+                function(component) {}
+            );
+        });
+    </script>
+   
+  
+  <script>
+   function displayMessage (evt) {
+   alert('----');
+   var message;
+    if (evt.origin !== "https://rk1988-dev-ed--ctrla51.na15.visual.force.com") {
+        //message = "You are not worthy";
+        //alert( '-------'message = "I got " + evt.data + " from " + evt.origin);
+        alert( '-------'message = "I got " + evt.data );
+    }
+    else {
+        message = "I got " + evt.data + " from " + evt.origin;
+    }
+    document.getElementById("received-message").innerHTML = message;
+}
+
+if (window.addEventListener) {
+    // For standards-compliant web browsers
+    window.addEventListener("message", displayMessage, false);
+}
+else {
+    window.attachEvent("onmessage", displayMessage);
+} 
+</script>
+</apex:page>

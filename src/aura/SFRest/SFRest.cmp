@@ -1,0 +1,8 @@
+<aura:component >
+    <aura:attribute name="params" type="Object" description="http params"/>
+    <!-- Listen to change in params value -->
+    <aura:handler name="change" value="{!v.params}" action="{!c.makeRequest}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<aura:registerEvent name="response" type="c:RestResponse"/>
+	<iframe aura:id="vfIframe" style='display:none;' src="/apex/RestAPI"></iframe>
+</aura:component>

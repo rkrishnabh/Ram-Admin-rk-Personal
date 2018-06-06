@@ -1,0 +1,28 @@
+<apex:page controller="wapperandparameters">
+  <apex:form >
+  <apex:pageblock >
+      <apex:pageBlockButtons >
+      <apex:commandButton value="Show Selectd Records on other page" action="{!show}" />
+      <apex:commandButton value="Show Selectd Records" action="{!show1}" />
+       
+      </apex:pageBlockButtons>
+      
+       <apex:pageblocksection >
+                <apex:pageblockTable value="{!wapcls}" var="item">
+                    <apex:column value="{!item.acc1.name}"/>
+                    <apex:column headerValue="Checkbox">
+                        <apex:inputCheckbox value="{!item.check}"/>
+                    </apex:column>
+                    <apex:column >
+                    <apex:selectOption >none</apex:selectOption>
+                    </apex:column>
+                </apex:pageblockTable>
+               
+                <apex:pageblocktable value="{!showAcc}" var="item1" id="pb2">
+                    <apex:column value="{!item1.name}"/>
+                </apex:pageblocktable>
+            </apex:pageblocksection>
+      
+  </apex:pageblock>
+  </apex:form>
+</apex:page>

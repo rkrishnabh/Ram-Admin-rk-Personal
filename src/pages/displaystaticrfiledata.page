@@ -1,0 +1,7 @@
+<apex:page controller="displaystaticrfiledata">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page: displaystaticrfiledata
+  <!-- End Default Content REMOVE THIS -->
+  {!textFromSomeUniqueName}
+</apex:page>

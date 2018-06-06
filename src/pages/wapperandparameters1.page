@@ -1,0 +1,9 @@
+<apex:page controller="wapperandparameters" >
+<apex:pageBlock >
+  <apex:pageblocktable value="{!showAcc}" var="item1" >
+                    <apex:column value="{!item1.name}"/>
+                   
+                </apex:pageblocktable>
+                <apex:outputLabel >Ramakrishna</apex:outputLabel>
+                </apex:pageBlock>
+</apex:page>

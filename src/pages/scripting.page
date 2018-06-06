@@ -1,0 +1,15 @@
+<apex:page >
+<script>
+    function Call(){
+        alert('Hey it is outline !!');
+    }
+</script>
+    <apex:includeScript value="{!$Resource.MyScript}"/>
+    <apex:outputLabel onmouseover="alert('Good Morning');">Inline Scripting</apex:outputLabel>
+    <br/>
+    <br/>
+    <apex:outputLabel onclick="Call()">Outline Scripting</apex:outputLabel>
+    <br/>
+    <br/>
+    <apex:outputLabel onclick="sayHello()">External Scripting</apex:outputLabel>
+</apex:page>
